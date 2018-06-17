@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dima-sample-flask    
+spec:
+  selector:                  
+    app: dima-sample-flask 
+  ports:
+  - port: 5000               
+    protocol: TCP
+    targetPort: 5000  
+    name: http       

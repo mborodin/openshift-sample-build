@@ -10,6 +10,6 @@ RUN pip install flask
 
 COPY app.py /app.py
 
-USER 1000
+USER 2000
 ENTRYPOINT [ "python" ]
 CMD [ "/app.py"]

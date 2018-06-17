@@ -11,7 +11,7 @@ spec:
     git:
       uri: "https://github.com/mborodin/openshift-sample-build.git"
   strategy: 
-    sourceStrategy:
+    dockerStrategy:
       from:
         kind: "ImageStreamTag"
         name: "python:alpine"

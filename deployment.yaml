@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: DeploymentConfig
+metadata: 
+  name: dima-sample-flask
+spec:
+  replicas: 1
+  selector:
+    deployment: dima-sample-flask
+  strategy:
+    # We set the type of strategy to Recreate, which means that it will be scaled down prior to being scaled up
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        deployment: dima-sample-flask
+        name: dima-sample-flask
+      name: dima-sample-flask
+    spec:
+      containers:
+      - image: dima-sample-flask:latest
+        name: dima-sample-flask
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+  triggers:
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - dima-sample-flask
+      from:
+        kind: ImageStreamTag
+        name: dima-sample-flask:latest
+    type: ImageChange
